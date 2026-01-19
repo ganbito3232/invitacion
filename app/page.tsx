@@ -42,17 +42,15 @@ export default function Home() {
           />
 
           {/* FLORES SUPERIORES */}
-          <div
-            className="absolute top-4 left-0 right-0 h-36 pointer-events-none"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 20% 40%, rgba(255,255,255,0.45) 1px, transparent 3px),
-                radial-gradient(circle at 60% 20%, rgba(255,255,255,0.35) 1px, transparent 3px)
-              `,
-              backgroundSize: "90px 90px",
-              opacity: 0.35,
-            }}
-          />
+          <div className="absolute top-0 left-0 right-0 h-36 pointer-events-none">
+            <Image
+              src="/plantas-top.png"
+              alt="Plantas decorativas"
+              fill
+              className="object-contain opacity-40"
+              priority
+            />
+          </div>
 
           {/* FLORES INFERIORES */}
           <div
@@ -81,20 +79,39 @@ export default function Home() {
           />
 
           {/* SOLAPA SUPERIOR */}
+          {/* SOLAPA SUPERIOR CON COLOR + PLANTAS */}
           <div
-            className="absolute inset-0 bg-[#b3c6a8] rounded-2xl origin-top"
+            className="absolute inset-0 rounded-2xl origin-top overflow-hidden"
             style={{
               clipPath: "polygon(0% 0%, 0% 28%, 50% 50%, 100% 28%, 100% 0%)",
               transform:
                 phase === "opening" ? "rotateX(120deg)" : "rotateX(0deg)",
               transformStyle: "preserve-3d",
               transition: "transform 3s cubic-bezier(0.4,0.0,0.2,1)",
-              boxShadow: `
-                inset 0 -1px 0 rgba(0,0,0,0.25),
-                inset 0 -10px 14px rgba(0,0,0,0.22)
-              `,
             }}
-          />
+          >
+            {/* COLOR BASE */}
+            <div className="absolute inset-0 bg-[#b3c6a8]" />
+
+            {/* PLANTAS PNG */}
+            <Image
+              src="/fondo1.png"
+              alt="Plantas decorativas"
+              fill
+              className="w-full h-full object-contain opacity-30 translate-y-[-230px] z-0"
+              priority
+            />
+            {/* SOMBRA DEL PLIEGUE */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                boxShadow: `
+        inset 0 -1px 0 rgba(0,0,0,0.25),
+        inset 0 -10px 14px rgba(0,0,0,0.22)
+      `,
+              }}
+            />
+          </div>
 
           {/* SELLO HUNDIDO */}
           {/* SELLO TIPO FOTO */}
@@ -104,7 +121,7 @@ export default function Home() {
           {phase === "closed" && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <Image
-                src="/ga3.png"
+                src="/ga.png"
                 alt="Sello G&A"
                 width={250}
                 height={250}
