@@ -8,7 +8,6 @@ export default function Home() {
   const openEnvelope = () => {
     if (phase !== "closed") return;
 
-    audioRef.current?.play();
     setPhase("opening");
 
     setTimeout(() => {
