@@ -41,30 +41,6 @@ export default function Home() {
             }}
           />
 
-          {/* FLORES SUPERIORES */}
-          <div className="absolute top-0 left-0 right-0 h-36 pointer-events-none">
-            <Image
-              src="/plantas-top.png"
-              alt="Plantas decorativas"
-              fill
-              className="object-contain opacity-40"
-              priority
-            />
-          </div>
-
-          {/* FLORES INFERIORES */}
-          <div
-            className="absolute bottom-4 left-0 right-0 h-36 pointer-events-none"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 30% 60%, rgba(0,0,0,0.18) 1px, transparent 3px),
-                radial-gradient(circle at 70% 40%, rgba(0,0,0,0.14) 1px, transparent 3px)
-              `,
-              backgroundSize: "90px 90px",
-              opacity: 0.28,
-            }}
-          />
-
           {/* SOLAPA INFERIOR CON IMAGEN PNG */}
           <div
             className="absolute inset-0 rounded-2xl overflow-hidden"
