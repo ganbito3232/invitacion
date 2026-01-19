@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState, useRef } from "react";
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen  flex items-center justify-center relative overflow-hidden">
+    <main className="min-h-screen bg-[#e8f1f5] flex items-center justify-center relative overflow-hidden">
       {/* HALO DE LUZ */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="w-[520px] h-[720px] bg-[#cfdcc8] blur-3xl opacity-30 rounded-full" />
@@ -83,7 +84,7 @@ export default function Home() {
           <div
             className="absolute inset-0 bg-[#b3c6a8] rounded-2xl origin-top"
             style={{
-              clipPath: "polygon(0% 0%, 0% 28%, 50% 58%, 100% 28%, 100% 0%)",
+              clipPath: "polygon(0% 0%, 0% 28%, 50% 50%, 100% 28%, 100% 0%)",
               transform:
                 phase === "opening" ? "rotateX(120deg)" : "rotateX(0deg)",
               transformStyle: "preserve-3d",
@@ -96,24 +97,22 @@ export default function Home() {
           />
 
           {/* SELLO HUNDIDO */}
+          {/* SELLO TIPO FOTO */}
+          {/* SELLO 3 CÍRCULOS (COMO LA FOTO) */}
+          {/* SELLO 3 CÍRCULOS – SOLO TAILWIND */}
+          {/* SELLO FINAL – IGUAL A LA FOTO */}
           {phase === "closed" && (
-            <div
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-              w-24 h-24 flex items-center justify-center cursor-pointer"
-              style={{
-                background: "#f3efe7",
-                borderRadius: "50%",
-                boxShadow: `
-                  inset 0 6px 10px rgba(0,0,0,0.28),
-                  inset 0 -2px 4px rgba(255,255,255,0.6),
-                  0 6px 10px rgba(0,0,0,0.25)
-                `,
-              }}
-            >
-              <span className="font-serif text-[#b8a37c] text-xl">G&A</span>
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <Image
+                src="/ga.png"
+                alt="Sello G&A"
+                width={250}
+                height={250}
+                className="drop-shadow-[0_1px_3px_rgba(0,0,0,0.22)]"
+                priority
+              />
             </div>
           )}
-
           {/* CARTA FULL (COMO LA FOTO) */}
           <div
             className={`absolute left-1/2 -translate-x-1/2 w-[92%]
