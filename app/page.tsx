@@ -9,48 +9,62 @@ export default function Home() {
     if (phase !== "closed") return;
 
     setPhase("opening");
-
-    setTimeout(() => {
-      setPhase("open");
-    }, 3200);
+    setTimeout(() => setPhase("open"), 3600);
   };
 
   return (
-    <main
-      style={{
-        background:
-          "radial-gradient(circle at 30% 30%, #f8f1e7, #e7d6b8, #c9a96a)",
-      }}
-      className="min-h-screen  flex items-center justify-center overflow-hidden"
-    >
-      {/* <audio ref={audioRef} src="/paper.mp3" preload="auto" /> */}
+    <main className="min-h-screen  flex items-center justify-center relative overflow-hidden">
+      {/* HALO DE LUZ */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[520px] h-[720px] bg-[#cfdcc8] blur-3xl opacity-30 rounded-full" />
+      </div>
 
       {/* SOBRE */}
       {phase !== "open" && (
         <div
-          className="relative w-[92vw] max-w-[420px] aspect-3/4"
-          style={{ perspective: "1600px" }}
           onClick={openEnvelope}
+          className="relative w-screen h-screen"
+          style={{ perspective: "2000px" }}
         >
           {/* BASE */}
           <div className="absolute inset-0 rounded-2xl bg-[#cfdcc8]" />
 
-          {/* TEXTURA PAPEL */}
+          {/* PAPEL PRENSADO */}
           <div
             className="absolute inset-0 rounded-2xl pointer-events-none"
             style={{
-              backgroundImage: `
-                radial-gradient(circle at 30% 20%, rgba(255,255,255,0.6) 1px, transparent 2px),
-                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.4) 1px, transparent 2px)
+              boxShadow: `
+                inset 0 0 0 1px rgba(0,0,0,0.08),
+                inset 0 20px 30px rgba(0,0,0,0.15)
               `,
-              backgroundSize: "60px 60px",
-              opacity: 0.25,
-              mixBlendMode: "overlay",
             }}
           />
 
-          {/* SOMBRA INTERNA */}
-          <div className="absolute inset-0 rounded-2xl shadow-inner pointer-events-none" />
+          {/* FLORES SUPERIORES */}
+          <div
+            className="absolute top-4 left-0 right-0 h-36 pointer-events-none"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 20% 40%, rgba(255,255,255,0.45) 1px, transparent 3px),
+                radial-gradient(circle at 60% 20%, rgba(255,255,255,0.35) 1px, transparent 3px)
+              `,
+              backgroundSize: "90px 90px",
+              opacity: 0.35,
+            }}
+          />
+
+          {/* FLORES INFERIORES */}
+          <div
+            className="absolute bottom-4 left-0 right-0 h-36 pointer-events-none"
+            style={{
+              backgroundImage: `
+                radial-gradient(circle at 30% 60%, rgba(0,0,0,0.18) 1px, transparent 3px),
+                radial-gradient(circle at 70% 40%, rgba(0,0,0,0.14) 1px, transparent 3px)
+              `,
+              backgroundSize: "90px 90px",
+              opacity: 0.28,
+            }}
+          />
 
           {/* SOLAPA INFERIOR */}
           <div
@@ -58,7 +72,10 @@ export default function Home() {
             style={{
               clipPath:
                 "polygon(0% 100%, 0% 70%, 50% 50%, 100% 70%, 100% 100%)",
-              boxShadow: "inset 0 10px 12px rgba(0,0,0,0.12)",
+              boxShadow: `
+                inset 0 1px 0 rgba(255,255,255,0.35),
+                inset 0 12px 16px rgba(0,0,0,0.22)
+              `,
             }}
           />
 
@@ -67,52 +84,56 @@ export default function Home() {
             className="absolute inset-0 bg-[#b3c6a8] rounded-2xl origin-top"
             style={{
               clipPath: "polygon(0% 0%, 0% 28%, 50% 58%, 100% 28%, 100% 0%)",
-              transformStyle: "preserve-3d",
               transform:
-                phase === "opening" ? "rotateX(115deg)" : "rotateX(0deg)",
-              transition: "transform 2.4s cubic-bezier(0.4,0.0,0.2,1)",
-              boxShadow: "inset 0 -8px 10px rgba(0,0,0,0.12)",
+                phase === "opening" ? "rotateX(120deg)" : "rotateX(0deg)",
+              transformStyle: "preserve-3d",
+              transition: "transform 3s cubic-bezier(0.4,0.0,0.2,1)",
+              boxShadow: `
+                inset 0 -1px 0 rgba(0,0,0,0.25),
+                inset 0 -10px 14px rgba(0,0,0,0.22)
+              `,
             }}
           />
 
-          {/* SELLO DE CERA */}
+          {/* SELLO HUNDIDO */}
           {phase === "closed" && (
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-              w-24 h-24 rounded-full flex items-center justify-center
-              cursor-pointer select-none"
+              w-24 h-24 flex items-center justify-center cursor-pointer"
               style={{
-                background:
-                  "radial-gradient(circle at 30% 30%, #f8f1e7, #e7d6b8, #c9a96a)",
-                boxShadow:
-                  "0 10px 20px rgba(0,0,0,0.35), inset 0 3px 6px rgba(255,255,255,0.6)",
-                transform: "rotate(-3deg)",
+                background: "#f3efe7",
+                borderRadius: "50%",
+                boxShadow: `
+                  inset 0 6px 10px rgba(0,0,0,0.28),
+                  inset 0 -2px 4px rgba(255,255,255,0.6),
+                  0 6px 10px rgba(0,0,0,0.25)
+                `,
               }}
             >
-              <span className="font-serif text-[#8c7a5a] text-xl tracking-widest">
-                G&A
-              </span>
+              <span className="font-serif text-[#b8a37c] text-xl">G&A</span>
             </div>
           )}
 
-          {/* CARTA */}
+          {/* CARTA FULL (COMO LA FOTO) */}
           <div
-            className={`absolute left-1/2 -translate-x-1/2 w-[88%]
-              bg-white rounded-3xl shadow-2xl px-8 py-10 text-center
-              transition-all duration-[1200ms] ease-out
-              ${
-                phase === "opening"
-                  ? "top-[55%] -translate-y-[130%] opacity-100 scale-105"
-                  : "top-[55%] opacity-0 scale-95"
-              }`}
-            style={{ transitionDelay: "1800ms" }}
+            className={`absolute left-1/2 -translate-x-1/2 w-[92%]
+            bg-[#fdfdfb] rounded-2xl shadow-2xl px-8 py-12 text-center
+            transition-all ease-out
+            ${
+              phase === "opening"
+                ? "top-[55%] -translate-y-[105%] opacity-100"
+                : "top-[55%] opacity-0"
+            }`}
+            style={{
+              transitionDuration: "1600ms",
+              transitionDelay: "2300ms",
+            }}
           >
             <h2 className="font-serif text-2xl text-[#2f2f2f]">
               Gabriel <span className="text-[#c7a16b]">♥</span> Ani
             </h2>
-
-            <p className="mt-2 text-xs tracking-widest text-gray-500">
-              NOS CASAMOS
+            <p className="mt-3 text-xs tracking-widest text-gray-500">
+              ESTA INVITACIÓN ES EXCLUSIVA PARA TI
             </p>
           </div>
         </div>
@@ -125,26 +146,14 @@ export default function Home() {
             <h1 className="font-serif text-3xl text-[#2f2f2f]">
               Gabriel <span className="text-[#c7a16b]">♥</span> Ani
             </h1>
-
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600">
               Con mucha alegría queremos invitarte a celebrar nuestro
               matrimonio.
             </p>
-
             <div className="space-y-1 text-gray-700">
               <p className="font-semibold tracking-widest">15 · Marzo · 2026</p>
               <p>18:00 hrs</p>
               <p>Viña del Mar</p>
-            </div>
-
-            <div className="space-y-3 pt-4">
-              <button className="w-full py-3 rounded-xl bg-[#c7a16b] text-white font-medium">
-                Confirmar asistencia
-              </button>
-
-              <button className="w-full py-3 rounded-xl border border-gray-300 text-gray-700">
-                Ver ubicación
-              </button>
             </div>
           </div>
         </div>
