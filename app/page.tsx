@@ -65,18 +65,42 @@ export default function Home() {
             }}
           />
 
-          {/* SOLAPA INFERIOR */}
+          {/* SOLAPA INFERIOR CON IMAGEN PNG */}
           <div
-            className="absolute inset-0 bg-[#b9cbb0] rounded-2xl"
+            className="absolute inset-0 rounded-2xl overflow-hidden"
             style={{
               clipPath:
                 "polygon(0% 100%, 0% 70%, 50% 50%, 100% 70%, 100% 100%)",
-              boxShadow: `
-                inset 0 1px 0 rgba(255,255,255,0.35),
-                inset 0 12px 16px rgba(0,0,0,0.22)
-              `,
             }}
-          />
+          >
+            {/* COLOR BASE */}
+            <div className="absolute inset-0 bg-[#b9cbb0]" />
+
+            {/* PLANTAS PNG (SIN FONDO) */}
+            <Image
+              src="/fondo3.png"
+              alt="Plantas decorativas inferiores"
+              fill
+              className="
+              w-full h-full
+      object-contain
+      opacity-35
+      translate-y-[200px]
+    "
+              priority
+            />
+
+            {/* SOMBRA DEL PLIEGUE */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                boxShadow: `
+        inset 0 1px 0 rgba(255,255,255,0.35),
+        inset 0 12px 16px rgba(0,0,0,0.22)
+      `,
+              }}
+            />
+          </div>
 
           {/* SOLAPA SUPERIOR */}
           {/* SOLAPA SUPERIOR CON COLOR + PLANTAS */}
