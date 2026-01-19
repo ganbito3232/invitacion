@@ -104,7 +104,7 @@ export default function Home() {
           {phase === "closed" && (
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <Image
-                src="/ga2.png"
+                src="ga.png"
                 alt="Sello G&A"
                 width={250}
                 height={250}
